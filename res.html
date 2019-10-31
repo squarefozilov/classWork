@@ -12,7 +12,7 @@
     <link rel="stylesheet"
     href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="modules/addTable.js"></script>
+    
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     
     <style>
@@ -66,6 +66,26 @@
        </p>
     </div>
     </footer>
-     
+    <script type="text/javascript">
+        $("#add-btn").on("click", function(event) {
+            event.preventDefault();
+            console.log("---");
+            var newCharacter = {
+              name  : $("#name").val().trim(),
+              phone : $("#phone").val().trim(),
+              email: $("#email").val().trim(),
+              id  : $("#id").val().trim()
+              
+            };
+      
+            // Question: What does this code do??
+            $.post("/reser", newCharacter)
+              .then(function(data) {
+                console.log("add.html", data);
+                alert("Adding character...");
+              });
+      });
+    
+    </script>
 </body>
 </html>

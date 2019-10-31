@@ -14,9 +14,23 @@ app.use(express.json());
 
 // Star Wars Characters (DATA)
 // =============================================================
-var  obj = [
- 
+var characters = [
+  {
+   "name" : "Louis T. Delia",
+   "photo" : "https://pbs.twimg.com/profile_images/639214960049000449/lNCRC-ub.jpg",
+   scores : [1,2,3,4,5,6,7,8,9,10]
+  },
+  {
+    "name": "Abbosjon",
+    "phone": "9295752531",
+    "email": "squarefozilov@gmail.com",
+    "id": "1234",
+    "routeName": "abbosjon"
+    }
+   
 ];
+
+
 
 // Routes
 // =============================================================
@@ -27,20 +41,22 @@ app.get("/", function(req, res) {
 });
 
 app.get("/res", function(req, res) {
+  console.log("hhhh");
   res.sendFile(path.join(__dirname, "res.html"));
 });
 
-app.get("/viewTables", function(req, res) {
+app.get("/view", function(req, res) {
   res.sendFile(path.join(__dirname, "viewTables.html"));
 });
 
 // Displays all characters
-app.get("/api/characters", function(req, res) {
+app.get("/api/table", function(req, res) {
   return res.json(characters);
 });
 
 // Displays a single character, or returns false
-app.get("/api/characters/:character", function(req, res) {
+app.get("/api/", function(req, res) {
+
   var chosen = req.params.character;
 
   console.log(chosen);
@@ -55,7 +71,8 @@ app.get("/api/characters/:character", function(req, res) {
 });
 
 // Create New Characters - takes in JSON input
-app.post("/api/characters", function(req, res) {
+app.post("/reser", function(req, res) {
+    console.log(req);
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body parsing middleware
   var newCharacter = req.body;
@@ -67,7 +84,6 @@ app.post("/api/characters", function(req, res) {
   console.log(newCharacter);
 
   characters.push(newCharacter);
-
   res.json(newCharacter);
 });
 
