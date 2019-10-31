@@ -30,30 +30,43 @@
         <a href="/home"><button class="btn btn-light btn-lg" id="home"><i class="fa fa-home"></i></button></a>
         </div>
 
-        <script type="text/javascript">
-            $("#make").on("click", function() {
-              var bookedReservation = $("#reservation-search").val().trim();
-        
-              // Using a RegEx Pattern to remove spaces from searchedCharacter
-              // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
-              bookedReservation = bookedReservation.replace(/\s+/g, "").toLowerCase();
-        
-              $.get("/api/table/" + bookedReservation, function(data) {
-                console.log(data);
-                if (data) {
-                  $("#make").show();
-                  $("#name").text(data.name);
-                  $("#phone").text(data.phone);
-                  $("#email").text(data.email);
-                  $("#id").text(data.id);
-                } else {
-                  $("#name").text(
-                    "Sorry. There are no tables available.");
-                }
-              });
-            });
-        
-          </script>
+        <div class="card">
+            <div class="card-header">
+                Current Reservations
+            </div>
+            <div class="card-body" id="reservation">
+                <script type="text/javascript">
+                    $("#make").on("click", function() {
+                        var bookedReservation = $("#reservation-search").val().trim();
+                
+                        // Using a RegEx Pattern to remove spaces from searchedCharacter
+                        // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+                        bookedReservation = bookedReservation.replace(/\s+/g, "").toLowerCase();
+                
+                        $.get("/api/table" + bookedReservation, function(data) {
+                        console.log(data);
+                        if (data) {
+                            $("#make").show();
+                            $("#name").text(data.name);
+                            $("#phone").text(data.phone);
+                            $("#email").text(data.email);
+                            $("#id").text(data.id);
+                        } else {
+                            $("#name").text(
+                            "Sorry. There are no tables available.");
+                        }
+                        });
+                    });
+                
+                </script>
+
+
+</div>
+
+<div class="card" id="waitList">
+
+</div>
+
 
     <footer>
     <div class="container">
@@ -64,38 +77,6 @@
        </p>
     </div>
 
-    <!-- //////////////////// -->
-    <div class="card">
-        <div class="card-header">
-          Current Reservations
-        </div>
-
-        <div class="card-body">
-           <ul>
-               
-    <table class="table table-striped">
-                        
-                        <tbody>
-                          <tr>
-                            <th scope="row" a href="#" class="btn btn-primary">1</th>
-                            <td >|</td>
-                          </tr>
-
-                         <tr>
-                            <th scope="row" a href="#" class="btn btn-primary">2</th>
-                            <td>|</td>
-                            </tr>
-
-                        <tr>
-                           <th scope="row" a href="#" class="btn btn-primary">3</th>
-                         <td>|</td>
-                        </tr>
-                         
-                        </tbody>
-                      </table>
-               
-
-        </ul>
     </footer>
 </body>
 </html>
