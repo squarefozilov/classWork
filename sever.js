@@ -12,11 +12,10 @@ var PORT = 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Star Wars Characters (DATA)
+// Reservation DATA
 // =============================================================
-var  = 
+var bookedReservation = {[]},
  
-];
 
 // Routes
 // =============================================================
@@ -26,17 +25,17 @@ app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "home.html"));
 });
 
-app.get("/viewTables", function(req, res) {
+app.get("/view", function(req, res) {
   res.sendFile(path.join(__dirname, "viewTables.html"));
 });
 
-// Displays all characters
-app.get("/api/characters", function(req, res) {
+// Displays all tables reserved
+app.get("/api/table", function(req, res) {
   return res.json(characters);
 });
 
-// Displays a single character, or returns false
-app.get("/api/characters/:character", function(req, res) {
+// Displays waiting list
+app.get("/api/waitlist/:character", function(req, res) {
   var chosen = req.params.character;
 
   console.log(chosen);
