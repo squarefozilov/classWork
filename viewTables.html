@@ -26,9 +26,35 @@
         <hr>
         <h3>Current Reservations and Waiting List.</h3>
         
-        <a href="/makeReservations.html"><button class="btn btn-danger btn-lg"><span class="fa fa-clipboard"></span> Make Reservation</button></a>
-        <a href="/home.html"><button class="btn btn-light btn-lg"><i class="fa fa-home"></i></button></a>
+        <a href="/makeReservations.html"><button class="btn btn-danger btn-lg" id="make" ><span class="fa fa-clipboard"></span> Make Reservation</button></a>
+        <a href="/home.html"><button class="btn btn-light btn-lg" id="home"><i class="fa fa-home"></i></button></a>
         </div>
+
+        <script type="text/javascript">
+            $("#make").on("click", function() {
+              var bookedReservation = $("#reservation-search").val().trim();
+        
+              // Using a RegEx Pattern to remove spaces from searchedCharacter
+              // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
+              bookedReservation = bookedReservation.replace(/\s+/g, "").toLowerCase();
+        
+              $.get("/api/table/" + bookedReservation, function(data) {
+                console.log(data);
+                if (data) {
+                  $("#make").show();
+                  $("#name").text(data.name);
+                  $("#phone").text(data.phone);
+                  $("#email").text(data.email);
+                  $("#id").text(data.id);
+                } else {
+                  $("#name").text(
+                    "Sorry. There are no tables available.");
+                }
+              });
+            });
+        
+          </script>
+
     <footer>
     <div class="container">
        <p>
