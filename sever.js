@@ -14,7 +14,7 @@ app.use(express.json());
 
 // Star Wars Characters (DATA)
 // =============================================================
-var  = [
+var  obj = [
  
 ];
 
@@ -24,6 +24,10 @@ var  = [
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "home.html"));
+});
+
+app.get("/res", function(req, res) {
+  res.sendFile(path.join(__dirname, "res.html"));
 });
 
 app.get("/viewTables", function(req, res) {

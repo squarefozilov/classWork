@@ -12,7 +12,9 @@
     <link rel="stylesheet"
     href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="modules/addTable.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
     <style>
         .jumbotron {
             font-family: 'Noto Sans', sans-serif;
@@ -32,7 +34,7 @@
     
         <div class="col-lg 12">
             <div class="row">Table Reservation</div>
-            <form>
+            <form form method="POST" role="form">
                 <div class="form-group">
                     <label for="name">Name</label>
                     <input type="name" class="form-control" id="name" placeholder="John Smith">
@@ -49,6 +51,7 @@
                     <label for="id">Unique ID</label>
                     <input type="id" class="form-control" id="id" placeholder="12345">
                 </div>
+                <button type="button" class="btn btn-primary btn-md" id="add-btn"><span class="fa fa-fire"></span> Add </button>
             </form>
        
 
@@ -63,5 +66,6 @@
        </p>
     </div>
     </footer>
+     
 </body>
 </html>
