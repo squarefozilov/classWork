@@ -1,7 +1,9 @@
 
 #### **A meal plan generator browser-based app** that allows the user to save searched recipes to weekly meal planner
 
+
 ---
+* .[DEMO] (https://squarefozilov.github.io/foodRecipe/.)
 ## Product features
 
 ### The Motivation for Development
